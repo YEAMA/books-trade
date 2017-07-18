@@ -1,0 +1,37 @@
+{{> header}}
+
+<div class="jumbotron">
+    <div class="container">
+        {{#if message}}
+            <div class="alert alert-success"><b>{{message}}</b></div>
+        {{/if}}
+        <h1>Voting app</h1>
+        <p>Create Polls, and vote for others!</p>
+
+        {{#if loggedin}}
+        <p><a class="btn btn-primary btn-lg" href="/poll/new" role="button">Create</a>     
+        <a class="btn btn-link btn-lg" href="/user/polls" role="button">My Polls</a></p>
+        {{^}}
+        <p><a class="btn btn-primary btn-lg" href="/signup" role="button">Sign Up</a>
+        <a class="btn btn-link btn-lg" href="/login" role="button">Log in</a></p>        
+        {{/if}}
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h2>All Polls:</h2>
+            {{#each polls}}
+            <a class="btn btn-default btn-block" href="/poll/{{_id}}">
+                {{poll_title}}
+            </a>
+            {{~/each}}  
+        
+        </div>
+    </div>    
+</div>
+
+
+{{> footer}}
