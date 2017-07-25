@@ -3,17 +3,17 @@
 <div class="jumbotron">
     <div class="container">
         {{#if message}}
-            <div class="alert alert-success"><b>{{message}}</b></div>
+        <div class="alert alert-success"><b>{{message}}</b></div>
         {{/if}}
-        <h1>Voting app</h1>
-        <p>Create Polls, and vote for others!</p>
+        <h1>Books Trading app</h1>
+        <p>Add your Books and trade with others!</p>
 
         {{#if loggedin}}
-        <p><a class="btn btn-primary btn-lg" href="/poll/new" role="button">Create</a>     
-        <a class="btn btn-link btn-lg" href="/user/polls" role="button">My Polls</a></p>
+        <p><a class="btn btn-primary btn-lg" href="/books/new" role="button">Add New Book</a>
+            <a class="btn btn-link btn-lg" href="/user/dashboard" role="button">Dashboard</a></p>
         {{^}}
-        <p><a class="btn btn-primary btn-lg" href="/signup" role="button">Sign Up</a>
-        <a class="btn btn-link btn-lg" href="/login" role="button">Log in</a></p>        
+        <p><a class="btn btn-primary btn-lg" href="/user/signup" role="button">Sign Up</a>
+            <a class="btn btn-link btn-lg" href="/user/login" role="button">Log in</a></p>
         {{/if}}
 
     </div>
@@ -22,15 +22,27 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h2>All Polls:</h2>
-            {{#each polls}}
-            <a class="btn btn-default btn-block" href="/poll/{{_id}}">
-                {{poll_title}}
-            </a>
-            {{~/each}}  
-        
+            <h2>All Books:</h2>
+            {{#each books}}
+            <div class="thumbnail" style="display: inline-block; width: 30%">
+                <img src="{{img_url}}" alt="{{book_title}}">
+                <div class="caption">
+                    <h3>{{book_title}}</h3>
+                    <p>Publisher: {{publisher}} <br> Date: {{date}} <br> Author: <strong>{{author}}</strong></p>
+                    
+                    {{#if ../loggedin}}
+                        <p><a href="/books/offer?owner={{_primary_owner}}&book={{_id}}" class="btn btn-primary btn-block" role="button">Request to Borrow!</a></p>
+                    {{^}}
+                        <p><a href="/user/login">Login to Borrow this book.</a></p>
+                    {{/if}}
+
+
+                </div>
+            </div>
+            {{~/each}}
+
         </div>
-    </div>    
+    </div>
 </div>
 
 

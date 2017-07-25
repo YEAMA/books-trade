@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{title}} - Voting App</title>
+    <title>{{title}} - Books Trade App</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -44,30 +44,37 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Voting App</a>
+                <a class="navbar-brand" href="/">Books Trade App</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
                     {{#if loggedin}}
                     <li>
-                        <a href="#" style="color: aqua">Welcome, {{username}}!</a>
+                        <a href="#" style="color: blue">Welcome, {{username}}!</a>
                     </li>
                     <li>
-                        <a href="/user/polls">My Polls</a>
+                        <a href="/user/dashboard">Dashboard</a>
                     </li>
                     <li>
-                        <a href="/logout">Logout</a>
+                        <a href="/user/library">My Library</a>
+                    </li>
+                    <li>
+                        <a href="/books/new" style="color: orange">Add New Book</a>
+                    </li>
+                    <li>
+                        <a href="/user/settings">Settings</a>
+                    </li>
+                    <li>
+                        <a href="/user/logout">Logout</a>
                     </li>
                     {{^}}
+
                     <li>
-                        <a href="/signup">Sign Up</a>
+                        <a href="/user/signup">Sign Up</a>
                     </li>
                     <li>
-                        <a href="/login">Log in</a>
+                        <a href="/user/login">Log in</a>
                     </li>
                     {{/if}}
                 </ul>

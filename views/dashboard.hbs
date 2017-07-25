@@ -1,0 +1,48 @@
+{{> header}}
+<style>
+  .btn-block {
+    display: inline-block !important;
+    width: 80% !important;
+    margin: 10px 0;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>Offers Received:</h2>
+      {{#each received}}
+      <div class="thumbnail" style="display: inline-block; width: 30%">
+        <img src="{{img_url}}" alt="{{book_title}}">
+        <div class="caption">
+          <h3>{{book_title}}</h3>
+          <p>From: <strong>{{_from_name}}</strong></p>
+          <p>Publisher: {{publisher}} <br> Date: {{date}} <br> Author: <strong>{{author}}</strong></p>
+          <p>
+            <a href="/books/offer/accept?borrowing={{_from}}&offer={{_id}}" class="btn btn-success" role="button">Accept</a>
+            <a href="/books/offer/remove?borrowing={{_from}}&offer={{_id}}" class="btn btn-danger" role="button">Reject</a>
+          </p>
+        </div>
+      </div>
+      {{/each}}
+      <hr>
+
+      <h2>Offers Sent:</h2>
+      {{#each sent}}
+      <div class="thumbnail" style="display: inline-block; width: 30%">
+        <img src="{{img_url}}" alt="{{book_title}}">
+        <div class="caption">
+          <h3>{{book_title}}</h3>
+          <p>Publisher: {{publisher}} <br> Date: {{date}} <br> Author: <strong>{{author}}</strong></p>
+          <p>
+            <a href="/books/offer/remove?owner={{_primary_owner}}&offer={{_id}}" class="btn btn-danger btn-block" role="button">Cancel</a>
+          </p>
+        </div>
+      </div>
+      {{/each}}
+
+    </div>
+  </div>
+</div>
+
+{{> footer}}
